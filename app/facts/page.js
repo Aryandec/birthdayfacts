@@ -8,6 +8,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
+import { FaBirthdayCake, FaGem, FaStar } from "react-icons/fa";
 
 const BirthdayStory = () => {
   const [facts, setFacts] = useState([]);
@@ -66,7 +67,7 @@ const BirthdayStory = () => {
 
       const zodiacIndex =
         day <= zodiacDates[month - 1][0] ? month - 1 : month % 12;
-      const zodiacSign = `${zodiacDates[zodiacIndex][1]} You’re a ${zodiacSigns[zodiacIndex]}. That means you’re bold and brave.`;
+      const zodiacSign = `${zodiacDates[zodiacIndex][1]} You’re a ${zodiacSigns[zodiacIndex]} 🌟. That means you’re bold and brave.`;
       const birthstone = `💎 Your birthstone is ${
         birthstones[month - 1]
       } – the gem of protection.`;
@@ -76,8 +77,8 @@ const BirthdayStory = () => {
       const daysAlive = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
       const secondsAlive = Math.floor((now - birthDate) / 1000);
       const aliveFacts = [
-        `You’ve been alive for ${daysAlive} days.`,
-        `That’s over ${secondsAlive.toLocaleString()} seconds of existence!`,
+        `🎉 You’ve been alive for ${daysAlive} days.`,
+        `⏳ That’s over ${secondsAlive.toLocaleString()} seconds of existence!`,
       ];
 
       try {
@@ -113,24 +114,24 @@ const BirthdayStory = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-500 to-purple-600 text-white">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-[#0f0c29] via-[#302b63] to-[#24243e] text-white font-sans">
       <div className="w-full h-screen overflow-y-scroll snap-y snap-mandatory">
         {facts.slice(0, 12).map((fact, index) => (
           <motion.div
             key={index}
-            className="snap-start w-full h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-200"
+            className="snap-start w-full h-screen flex items-center justify-center"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.5 }}
           >
             <motion.div
-              className="p-6 bg-white rounded-lg shadow-lg max-w-md"
+              className="p-6 bg-[rgba(255,255,255,0.05)] backdrop-filter backdrop-blur-lg border border-[rgba(255,255,255,0.2)] rounded-2xl shadow-xl max-w-md transition-transform transform hover:scale-105 hover:shadow-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
               <motion.p
-                className="mt-4 text-gray-600"
+                className="mt-4 text-gray-300 text-4xl font-bold tracking-tight"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1 }}
@@ -144,34 +145,34 @@ const BirthdayStory = () => {
                     quote="Check out my birthday story!"
                     className="mb-4"
                   >
-                    <button className="px-4 py-2 bg-blue-600 text-white rounded-md">
+                    <div className="px-4 py-2 bg-blue-600 text-white rounded-md transition-transform transform hover:scale-105 hover:shadow-lg cursor-pointer">
                       Share on Facebook
-                    </button>
+                    </div>
                   </FacebookShareButton>
                   <TwitterShareButton
                     url={window.location.href}
                     title="Check out my birthday story!"
                     className="mb-4"
                   >
-                    <button className="px-4 py-2 bg-blue-400 text-white rounded-md">
+                    <div className="px-4 py-2 bg-blue-400 text-white rounded-md transition-transform transform hover:scale-105 hover:shadow-lg cursor-pointer">
                       Share on Twitter
-                    </button>
+                    </div>
                   </TwitterShareButton>
                   <WhatsappShareButton
                     url={window.location.href}
                     title="Check out my birthday story!"
                     className="mb-4"
                   >
-                    <button className="px-4 py-2 bg-green-500 text-white rounded-md">
+                    <div className="px-4 py-2 bg-green-500 text-white rounded-md transition-transform transform hover:scale-105 hover:shadow-lg cursor-pointer">
                       Share on WhatsApp
-                    </button>
+                    </div>
                   </WhatsappShareButton>
-                  <button
+                  <div
                     onClick={() => window.location.reload()}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                    className="px-4 py-2 bg-gray-700 text-white rounded-md transition-transform transform hover:scale-105 hover:shadow-lg cursor-pointer"
                   >
                     Restart Story
-                  </button>
+                  </div>
                 </div>
               )}
             </motion.div>
